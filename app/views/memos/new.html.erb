@@ -1,0 +1,9 @@
+        <%= form_for (@memo) do |f| %>
+          <div class="field row">
+            <label for="book_opinion">Opinion</label>
+            <p><%= f.text_area :body%></p>
+          </div>
+          <div class="actions row">
+            <%= f.submit class: "btn btn-primary col-xs-12" %>
+          </div>
+        <% end %>
