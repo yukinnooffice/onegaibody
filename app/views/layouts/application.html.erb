@@ -7,9 +7,38 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
-
+  <% if user_signed_in? %>
+    <header>
+      <div class="container">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="nav-item nav-link"><%= link_to 'おねがいプロテイン', root_path, class: "logo" %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item nav-link"><%= link_to 'トレーニングメモ', memos_path %></li>
+          <li class="nav-item nav-link"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    </header>
+    <% else %>
+    <header>
+      <div class="container">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="nav-item nav-link"><%= link_to 'おねがいプロテイン', root_path, class: "logo" %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item nav-link"><%= link_to '新規登録', new_user_registration_path %></li>
+          <li class="nav-item nav-link"><%= link_to 'ログイン', new_user_session_path %></li>
+          <li><%= link_to 'ゲストログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
+        </ul>
+      </div>
+    </header>
+  <% end %>
   <body>
+    <% if flash[:notice] %>
+    <div class="notice"><%= notice %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

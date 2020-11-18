@@ -13,4 +13,29 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
+//= require bootstrap-sprockets
 //= require_tree .
+$(function(){
+   $(window).on('load scroll', function() {
+      var winScroll = $(window).scrollTop();
+      var winHeight = $(window).height();
+      var scrollPos = winScroll + (winHeight * 0.8);
+
+      $(".show").each(function() {
+         if($(this).offset().top < scrollPos) {
+            $(this).css({opacity: 1, transform: 'translate(0, 0)'});
+         }
+      });
+   });
+});
+
+// トップページへ遷移する
+$(function() {
+   setTimeout(function(){
+      $('.start p').fadeIn(1600);
+   },500); //0.5秒後にロゴをフェードイン!
+   setTimeout(function(){
+      $('.start').fadeOut(500);
+   },2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！
+});
