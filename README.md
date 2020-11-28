@@ -43,7 +43,6 @@
 -  jQuery
 
 #### \ 特にお世話になったgem や ライブラリ /
-- RSpec(テスト)
 - simpulCalender(カレンダー表示)
 - kaminari(ページネーション)
 - devise(ログイン機能)
